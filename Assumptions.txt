@@ -1,0 +1,7 @@
+Everything is Lowercase
+Ignore words with 2 letters or less
+Ignore words with digits in them
+Hyphenated words are treated as separate words
+Words with Apostrophe's in them originally only contain the section before the apostrophe
+Anything between "<>" is an HTML tag and not part of the message content
+A list of words commonly found in the header are ignored

@@ -6,7 +6,8 @@ public class ProbabilityCalculator {
 	public static void calcSmoothedProbability(ArrayList<String> hamDict, ArrayList<String> spamDict)
 	{
 		ArrayList<String> uniqueWords = new ArrayList<String>();
-		int totalCount = hamDict.size();
+		int totalHamCount = hamDict.size();
+		int totalSpamCount = spamDict.size();
 		int hamCount = 0;
 		int spamCount = 0;
 		float hamProb = 0;
@@ -48,8 +49,8 @@ public class ProbabilityCalculator {
 				}
 			}
 			
-			hamProb = probability(hamCount, totalCount, vocabSize);
-			spamProb = probability(spamCount, hamCount, vocabSize);
+			hamProb = probability(hamCount, totalHamCount, vocabSize);
+			spamProb = probability(spamCount, totalSpamCount, vocabSize);
 			System.out.println(word + "   " + hamCount + "   " + hamProb + "   " + spamCount + "   " + spamProb);
 		
 			hamCount = 0;

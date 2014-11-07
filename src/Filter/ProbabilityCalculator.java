@@ -1,18 +1,27 @@
+//*******************************
+// COMP 472 Project Deliverable 1
+// Author: Daniel Miller (6602002)
+// Author: Yash Lalwani (6531857)
+// 27th October 2014
+//*******************************
+
 package Filter;
+
 import java.util.*;
 import java.io.*;
 
-public class ProbabilityCalculator {
-
+public class ProbabilityCalculator 
+{
 	public static void calcSmoothedProbability(ArrayList<String> hamDict, ArrayList<String> spamDict)
 	{
 		try
 		{
 
-			File file = new File("Model.txt");
+			File file = new File("model.txt");
 			BufferedWriter output = new BufferedWriter(new FileWriter(file));
 
 			ArrayList<String> uniqueWords = new ArrayList<String>();
+			int wordNumber = 1;
 			int totalHamCount = hamDict.size();
 			int totalSpamCount = spamDict.size();
 			int hamCount = 0;
@@ -36,6 +45,8 @@ public class ProbabilityCalculator {
 				}
 			}
 
+			Collections.sort(uniqueWords);
+			
 			int vocabSize = uniqueWords.size();
 
 			for (String word : uniqueWords)
@@ -59,8 +70,8 @@ public class ProbabilityCalculator {
 				hamProb = probability(hamCount, totalHamCount, vocabSize);
 				spamProb = probability(spamCount, totalSpamCount, vocabSize);
 				
-				String out = word + "   " + hamCount + "   " + hamProb + "   " + spamCount + "   " + spamProb;
-				System.out.println(out);
+				String out = wordNumber++ + "   " + word + "   " + hamCount + "   " + hamProb + "   " + spamCount + "   " + spamProb;
+				// System.out.println(out);
 				output.write(out);
 				output.newLine();
 				hamCount = 0;
@@ -75,7 +86,7 @@ public class ProbabilityCalculator {
 
 		}
 	}
-
+	
 	public static float probability(int count, int totalCount, int vocabSize)
 	{
 		float result = 0;

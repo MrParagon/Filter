@@ -1,14 +1,34 @@
+//*******************************
+// COMP 472 Project Deliverable 1
+// Author: Daniel Miller (6602002)
+// Author: Yash Lalwani (6531857)
+// 27th October 2014
+//*******************************
+
 package Filter;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.*;
+
 
 public class Tokenizer 
 {
+
 	public static boolean isWord(String word)
 	{
+		if (word.length() < 3)
+			return false;
+		
+		for (int i = 0; i < word.length(); ++i)
+		{
+			if (Character.isLetter(word.charAt(i)) == false)
+			{
+				return false;
+			}	
+		}
 		
 		switch(word) 
 		{
@@ -108,97 +128,26 @@ public class Tokenizer
 				return false;
 		}
 		
-		if (word.length() < 3)
-			return false;
-		else if (word.matches(".*\\d.*"))
-			return false;
-		
-		for (int i = 0; i < word.length(); ++i)
-		{
-			if (Character.isLetter(word.charAt(i)) == false)
-			{
-				return false;
-			}	
-		}
 		return true;
 	}
-	
-	public static void main(String[] args)
+
+	public static void main(String[] args) 
 	{
-		File spamFolder = new File("C:\\Users\\Yash\\Desktop\\20030228_spam_2.tar\\spam_2");
-		File[] listOfSpamFiles = spamFolder.listFiles();
 		
 		ArrayList<String> hamWords = new ArrayList<String>();
 		ArrayList<String> spamWords = new ArrayList<String>();
 		
+		
+		// Create the list of all spam words (non unique)
+		File spamFolder = new File("20030228_spam_2.tar\\spam_2");
+		File[] listOfSpamFiles = spamFolder.listFiles();
+			
 		for (int i = 0; i < 1000; ++i)
 		{
 			if (listOfSpamFiles[i].isFile())
 			{
 				File tempFile = new File(listOfSpamFiles[i].getPath());
-				System.out.println(tempFile.getName());
-				try 
-				{
-					Scanner sc = new Scanner(tempFile);
-					
-					while (sc.hasNext())
-					{
-						//if (sc.next().compareTo("Subject:") == 0)
-						//{
-							
-							String tempLine = sc.nextLine();
-							String[] tempWords = tempLine.split("\\[|\\]|\\(|\\)|!|'|,| |-|\\.|;|\"|\\?|\\{|\\}");
-							
-							for (int j = 0; j < tempWords.length; ++j)
-							{
-								tempWords[j] = tempWords[j].toLowerCase();
-								
-								//if (Character.isLetter(tempWords[j].charAt(0)) == false)
-								//{
-									
-								//}
-								
-								if (isWord(tempWords[j]))
-								{
-									// System.out.print(tempWords[j] + " ");
-									spamWords.add(tempWords[j]);
-								}
-							}
-							
-							//System.out.println();
-							//break;
-						//}
-						
-					}
-					
-					
-				}
-				catch (FileNotFoundException f)
-				{
-					System.out.println("FAIL");
-				}
-				
-				
-				// System.out.println("File " + listOfFiles[i].getPath());
-			}
-			
-		}
-		/*
-		for (int i = 0; i < spamWords.size(); ++i)
-		{
-			System.out.println(spamWords.get(i));
-		}
-		*/
-			
-		File hamFolder = new File("C:\\Users\\Yash\\Desktop\\20030228_easy_ham_2.tar\\easy_ham_2");
-		File[] listOfHamFiles = hamFolder.listFiles();
-		
-		for (int i = 0; i < 1000; ++i)
-		{
-			if (listOfHamFiles[i].isFile())
-			{
-				File tempFile = new File(listOfHamFiles[i].getPath());
-				System.out.println(tempFile.getName());
+				// System.out.println(tempFile.getName());
 				try 
 				{
 					Scanner sc = new Scanner(tempFile);
@@ -211,11 +160,49 @@ public class Tokenizer
 						for (int j = 0; j < tempWords.length; ++j)
 						{
 							tempWords[j] = tempWords[j].toLowerCase();
+								
+							if (isWord(tempWords[j]))
+							{
+								// System.out.print(tempWords[j] + " ");
+								spamWords.add(tempWords[j]);
+							}
+						}	
+						
+					}
+					
+					
+				}
+				catch (FileNotFoundException f)
+				{
+					System.out.println(f.getMessage());
+				}
+				
+			}
+			
+		}
+					
+		// Create the list of all ham words (non unique)
+		File hamFolder = new File("C:\\Users\\Yash\\Desktop\\20030228_easy_ham_2.tar\\easy_ham_2");
+		File[] listOfHamFiles = hamFolder.listFiles();
+		
+		for (int i = 0; i < 1000; ++i)
+		{
+			if (listOfHamFiles[i].isFile())
+			{
+				File tempFile = new File(listOfHamFiles[i].getPath());
+				// System.out.println(tempFile.getName());
+				try 
+				{
+					Scanner sc = new Scanner(tempFile);
+					
+					while (sc.hasNext())
+					{
+						String tempLine = sc.nextLine();
+						String[] tempWords = tempLine.split("\\[|\\]|\\(|\\)|!|'|,| |-|\\.|;|\"|\\?|\\{|\\}");
 							
-								//if (Character.isLetter(tempWords[j].charAt(0)) == false)
-								//{
-									
-								//}
+						for (int j = 0; j < tempWords.length; ++j)
+						{
+							tempWords[j] = tempWords[j].toLowerCase();
 								
 							if (isWord(tempWords[j]))
 							{
@@ -224,33 +211,28 @@ public class Tokenizer
 							}
 						}
 							
-							//System.out.println();
-							//break;
-						//}
-						
 					}
 					
 					
 				}
 				catch (FileNotFoundException f)
 				{
-					System.out.println("FAIL");
+					System.out.println(f.getMessage());
 				}
 				
-				
-				// System.out.println("File " + listOfFiles[i].getPath());
 			}
 			
 		}
-		/*
-		for (int i = 0; i < hamWords.size(); ++i)
-		{
-			System.out.println(hamWords.get(i));
-		}
-		*/
-		System.out.println(spamWords.size());
-		System.out.println(hamWords.size());
+		
+		System.out.println("Total spam words: " + spamWords.size());
+		System.out.println("Total ham words: " + hamWords.size());
+		
+		// Create model.txt
+		System.out.println("Running smoothed probability function and writing to file...");
+		ProbabilityCalculator.calcSmoothedProbability(hamWords, spamWords);
+		System.out.println("Done!\nYou can't have egg bacon spam and sausage without the spam.");
 		
 		
 	}
+
 }

@@ -9,9 +9,8 @@ package Filter;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.*;
+import java.util.Scanner;
 
 
 public class Tokenizer 
@@ -182,7 +181,7 @@ public class Tokenizer
 		}
 					
 		// Create the list of all ham words (non unique)
-		File hamFolder = new File("C:\\Users\\Yash\\Desktop\\20030228_easy_ham_2.tar\\easy_ham_2");
+		File hamFolder = new File("20030228_easy_ham_2.tar\\easy_ham_2");
 		File[] listOfHamFiles = hamFolder.listFiles();
 		
 		for (int i = 0; i < 1000; ++i)

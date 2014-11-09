@@ -7,7 +7,7 @@ public class Classifier {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public static boolean classifyFromModel(Word[] model, ArrayList<String> email)
+	public static boolean classifyFromModel(ArrayList<Word> model, ArrayList<String> email)
 	{
 		boolean ham;
 		//ham is hypothesis, p = 0.5 since training sets of equal size were used
@@ -28,5 +28,4 @@ public class Classifier {
 		ham = (probHam > probSpam);
 		return ham;
 	}
-
 }

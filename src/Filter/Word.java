@@ -33,6 +33,11 @@ public class Word
 		return spamProb;
 	}
 	
+	public void setName(String n)
+	{
+		name = n;
+	}
+	
 	public void setHamFreq(double hF)
 	{
 		hamFreq = hF;

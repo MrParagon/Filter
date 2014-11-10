@@ -7,6 +7,12 @@ public class Classifier {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public static void main(String[] args)
+	{
+		Model.load();
+		System.out.println("Done");
+	}
+	
 	public static boolean classifyFromModel(ArrayList<Word> model, ArrayList<String> email)
 	{
 		boolean ham;

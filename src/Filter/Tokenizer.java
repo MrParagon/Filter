@@ -130,6 +130,44 @@ public class Tokenizer
 		return true;
 	}
 
+	public static ArrayList<String> tokenizeEmail(File tempFile)
+	{
+		ArrayList<String> allWords = new ArrayList<String>();
+		
+		try
+		{
+			Scanner ab = new Scanner(tempFile);
+			
+			while (ab.hasNext())
+			{
+				String tempLine = ab.nextLine();
+				String[] tempWords = tempLine.split("\\[|\\]|\\(|\\)|!|'|,| |-|\\.|;|\"|\\?|\\{|\\}");
+					
+				for (int j = 0; j < tempWords.length; ++j)
+				{
+					tempWords[j] = tempWords[j].toLowerCase();
+						
+					if (isWord(tempWords[j]))
+					{
+						// System.out.print(tempWords[j] + " ");
+						allWords.add(tempWords[j]);
+					}
+				}	
+				
+			}
+			
+			ab.close();
+			
+		}
+		catch (FileNotFoundException f)
+		{
+			System.out.println(f.getMessage());
+		}
+		
+		return allWords;
+		
+	}
+	/*
 	public static void main(String[] args) 
 	{
 		
@@ -233,5 +271,5 @@ public class Tokenizer
 		
 		
 	}
-
+	*/
 }

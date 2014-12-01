@@ -10,7 +10,7 @@ public class Model {
 	public static void load()
 	{
 		model = new ArrayList<Word>();
-		File modelFile = new File("Model.txt");
+		File modelFile = new File("model3.txt");
 		try
 		{
 			Scanner sc = new Scanner(modelFile);

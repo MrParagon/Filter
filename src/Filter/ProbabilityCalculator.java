@@ -16,8 +16,8 @@ public class ProbabilityCalculator
 	{
 		try
 		{
-
-			File file = new File("model.txt");
+			
+			File file = new File("model3.txt");
 			BufferedWriter output = new BufferedWriter(new FileWriter(file));
 
 			ArrayList<String> uniqueWords = new ArrayList<String>();
@@ -90,7 +90,7 @@ public class ProbabilityCalculator
 	public static float probability(int count, int totalCount, int vocabSize)
 	{
 		float result = 0;
-		result = (float) (((float)count+0.5)/(totalCount+(float)vocabSize/2));
+		result = (float) (((float)count+1)/(totalCount+(float)vocabSize/2));
 		return result;
 	}
 }

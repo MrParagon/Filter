@@ -1,3 +1,4 @@
+
 package Filter;
 import java.util.*;
 import java.io.*;
@@ -13,7 +14,7 @@ public class Classifier {
 		Model.load();
 		System.out.println("Model Load Done");
 		
-		File resultFile = new File("results.txt");
+		File resultFile = new File("results3.txt");
 		try
 		{	
 			BufferedWriter bw = new BufferedWriter(new FileWriter(resultFile));
@@ -107,7 +108,7 @@ public class Classifier {
 			
 			Scanner sc = new Scanner(resultFile);
 			
-			File analysisFile = new File("analysis.txt");
+			File analysisFile = new File("analysis3.txt");
 			
 			BufferedWriter bw = new BufferedWriter(new FileWriter(analysisFile));
 			

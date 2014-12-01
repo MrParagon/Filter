@@ -18,7 +18,7 @@ public class Tokenizer
 
 	public static boolean isWord(String word)
 	{
-		if (word.length() < 3)
+		if (word.length() < 4)
 			return false;
 		
 		for (int i = 0; i < word.length(); ++i)
@@ -129,7 +129,7 @@ public class Tokenizer
 		
 		return true;
 	}
-
+	
 	public static ArrayList<String> tokenizeEmail(File tempFile)
 	{
 		ArrayList<String> allWords = new ArrayList<String>();
@@ -167,6 +167,7 @@ public class Tokenizer
 		return allWords;
 		
 	}
+	
 	/*
 	public static void main(String[] args) 
 	{

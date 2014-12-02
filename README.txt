@@ -1,13 +1,13 @@
-COMP 472 Project Deliverable 2
+COMP 472 Project Deliverable 3
 
 by
 Daniel Miller - 6602002
 Yash Lalwani - 6531857
 
 We certify that this submission is the original work of members of the group and meets the
-Faculty's Expectations of Originality
+Faculty's Expectations of Originality.
 
-Signed Daniel Miller and Yash Lalwani, 10th November, 2014.
+Signed Daniel Miller and Yash Lalwani, 1st December, 2014.
 
 Instructions to run Deliverable 1:
 
@@ -63,3 +63,11 @@ The only changes we made to our Deliverable 1 code was to move the main from
 Please note that we took the instructions to be literal and wrote our code so that it
 checks files named '01001.xxx to 01400.xxx' from the 'spam' folder and files named 
 '01000.xxx to 01400.xxx' from the 'ham' folder.
+
+==================================================================================================
+
+Deliverable 3 Notes:
+
+1) Minimum length of words is now changed from 3 to 4.
+
+2) Smoothing technique is now changed from add 0.5 to add 1.0.
